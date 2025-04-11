@@ -3,31 +3,324 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ghost BPA - Under Construction</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Ghost Business Process Automation</title>
+  <!-- Use a proper stylesheet that would be processed by the Tailwind CLI in production -->
+  <link href="css/output.css" rel="stylesheet">
+  <!-- Fallback to CDN for development if css/styles.css doesn't exist yet -->
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            courier: ['Courier', 'monospace'],
-          },
+    // Check if the stylesheet loaded correctly, if not use CDN as fallback
+    const link = document.querySelector('link[href="css/output.css"]');
+    link.addEventListener('error', function() {
+      const cdnScript = document.createElement('script');
+      cdnScript.src = 'https://cdn.tailwindcss.com';
+      document.head.appendChild(cdnScript);
+      
+      // Add the configuration for the CDN version
+      setTimeout(() => {
+        if (window.tailwind) {
+          window.tailwind.config = {
+            theme: {
+              extend: {
+                colors: {
+                  'ghost-purple': '#8B5CF6', // Vibrant neon purple
+                  'ghost-dark': '#111827',
+                },
+                fontFamily: {
+                  sans: ['Inter', 'system-ui', 'sans-serif'],
+                },
+              }
+            }
+          };
         }
-      }
-    }
+      }, 100);
+    });
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Courier', monospace;
+    /* Critical CSS that should be inlined for performance */
+    .neon-purple {
+      color: #8B5CF6;
+    }
+    .bg-neon-purple {
+      background-color: #8B5CF6;
+    }
+    .bg-ghost-purple {
+      background-color: #6b46c1;
+    }
+    .bg-ghost-dark {
+      background-color: #2d3748;
+    }
+    .text-ghost-purple {
+      color: #6b46c1;
+    }
+    .text-ghost-dark {
+      color: #2d3748;
+    }
+    .border-ghost-purple {
+      border-color: #6b46c1;
+    }
+    .hover\:bg-purple-700:hover {
+      background-color: #553c9a;
+    }
+    .hover\:bg-purple-50:hover {
+      background-color: #f5f3ff;
+    }
+    .hover\:text-ghost-purple:hover {
+      color: #6b46c1;
+    }
+    .neon-purple {
+      filter: drop-shadow(0 0 0.5rem rgba(107, 70, 193, 0.7));
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      margin: 10% auto;
+      max-width: 500px;
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      animation: modalFadeIn 0.3s;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
-  <div class="w-full max-w-md mx-auto px-4 text-center">
-    <h1 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-courier">GHOST BPA</h1>
-    <div class="border-t border-gray-700 w-16 md:w-24 mx-auto my-6 md:my-8"></div>
-    <p class="text-lg md:text-xl mb-6 md:mb-8 font-courier">UNDER CONSTRUCTION</p>
-    <p class="text-gray-400 text-sm md:text-base max-w-md mx-auto font-courier">Our website is currently being built. Please check back soon for updates.</p>
+<body class="bg-white font-sans">
+  <!-- Header/Navigation -->
+  <header class="border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <a href="#" class="flex items-center">
+              <span class="h-10 w-10 bg-ghost-dark rounded-md flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </span>
+              <span class="ml-2 text-xl font-bold text-ghost-dark">GhostBPA</span>
+            </a>
+          </div>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#" class="text-gray-700 hover:text-ghost-dark font-medium">Product</a>
+          <a href="#" class="text-gray-700 hover:text-ghost-dark font-medium">Solutions</a>
+          <a href="#" class="text-gray-700 hover:text-ghost-dark font-medium">Resources</a>
+          <a href="#" class="text-gray-700 hover:text-ghost-dark font-medium">Pricing</a>
+        </nav>
+        <div class="hidden md:flex items-center">
+          <a href="#" class="bg-ghost-purple hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-md">
+            Contact Us
+          </a>
+        </div>
+        <div class="md:hidden">
+          <button type="button" class="text-gray-700 hover:text-ghost-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
+      <div class="text-center lg:grid lg:grid-cols-12 lg:gap-8 lg:text-left">
+        <!-- Update Notification Banner -->
+        <div class="lg:col-span-12 mb-8">
+          <div class="inline-flex items-center px-3 py-2 rounded-full bg-purple-100 text-purple-800">
+            <span class="inline-flex items-center justify-center rounded-full bg-ghost-purple p-1 mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <span class="text-sm font-medium">Connect all your tasks, docs, people</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="lg:col-span-6 lg:flex lg:flex-col lg:justify-center">
+          <h1 class="text-5xl lg:text-6xl font-bold tracking-tight mb-8">
+            <span class="text-gray-300">Streamline</span> <span class="inline-flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 neon-purple mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </span> <span class="text-gray-300">business<br>processes</span>
+          </h1>
+          <p class="text-xl text-gray-700 mb-8 mx-auto lg:mx-0 max-w-2xl">
+            Boost business productivity and communication. Our platform provides a central hub for automating workflows, tracking progress, and staying in sync.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+            <a href="#" id="getStartedBtn" class="bg-ghost-purple hover:bg-purple-700 text-white font-medium px-6 py-3 rounded-lg inline-flex items-center justify-center transition-colors shadow-md">
+              Get started
+              <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a href="#" class="border-2 border-ghost-purple bg-white text-ghost-purple hover:bg-purple-50 font-medium px-6 py-3 rounded-lg inline-flex items-center justify-center transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5 text-ghost-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Watch demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="mt-10 lg:mt-0 lg:col-span-6">
+          <div class="relative mx-auto w-full rounded-lg shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Business process automation dashboard" class="w-full object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lean Footer -->
+  <footer class="bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      <div class="md:flex md:items-center md:justify-between">
+        <div class="flex justify-center md:justify-start">
+          <a href="#" class="flex items-center">
+            <span class="h-9 w-9 bg-ghost-dark rounded-md flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </span>
+            <span class="ml-2 text-xl font-bold text-ghost-dark">GhostBPA</span>
+          </a>
+        </div>
+        <p class="mt-4 text-center text-sm text-gray-500 md:mt-0">
+          &copy; 2024 Ghost Business Process Automation. All rights reserved.
+        </p>
+        <div class="mt-4 flex justify-center space-x-6 md:mt-0">
+          <a href="#" class="text-gray-600 hover:text-ghost-purple">
+            <span class="sr-only">Privacy Policy</span>
+            Privacy Policy
+          </a>
+          <a href="#" class="text-gray-600 hover:text-ghost-purple">
+            <span class="sr-only">Terms</span>
+            Terms
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Contact Form Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-ghost-dark">Get Started</h2>
+        <button id="closeModal" class="text-gray-500 hover:text-gray-800">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <p class="text-gray-600 mb-4">Fill out the form below to learn more about GhostBPA and how we can help streamline your business processes.</p>
+      
+      <!-- Replace 'your-form-id' with your actual Formspree form ID -->
+      <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+          <input type="text" id="name" name="name" required 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ghost-purple focus:border-transparent">
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+          <input type="email" id="email" name="email" required 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ghost-purple focus:border-transparent">
+        </div>
+        <div class="mb-4">
+          <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+          <input type="text" id="company" name="company" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ghost-purple focus:border-transparent">
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">How can we help?</label>
+          <textarea id="message" name="message" rows="3" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ghost-purple focus:border-transparent"></textarea>
+        </div>
+        <button type="submit" 
+          class="w-full bg-ghost-purple hover:bg-purple-700 text-white font-medium px-6 py-3 rounded-lg inline-flex items-center justify-center transition-colors shadow-md">
+          Submit
+        </button>
+      </form>
+    </div>
   </div>
+
+  <script>
+    // Modal functionality
+    const modal = document.getElementById('contactModal');
+    const getStartedBtn = document.getElementById('getStartedBtn');
+    const closeModal = document.getElementById('closeModal');
+    
+    getStartedBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.style.display = 'block';
+    });
+    
+    closeModal.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+    
+    // Form submission
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          form.reset();
+          alert('Thank you for your message. We will get back to you soon!');
+          modal.style.display = 'none';
+        } else {
+          alert('There was an error sending your message. Please try again later.');
+        }
+      })
+      .catch(error => {
+        alert('There was an error sending your message. Please try again later.');
+      });
+    });
+  </script>
 </body>
 </html> 
