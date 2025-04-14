@@ -82,12 +82,14 @@
       width: 100%;
       padding: 10px 0;
       overflow: hidden;
+      background: transparent;
+      min-height: 80px;
     }
 
     .badge-track {
       display: flex;
       width: fit-content;
-      animation: scroll 20s linear infinite;
+      animation: scroll 30s linear infinite;
       will-change: transform;
     }
 
@@ -98,41 +100,29 @@
     .badge-group {
       display: flex;
       align-items: center;
-      gap: 20px;
-      padding: 0 10px;
+      gap: 1.5rem;
+      padding: 0 1rem;
     }
 
     .badge-group img {
-      height: 48px;
-      width: auto;
+      width: 60px !important;
+      height: 60px !important;
+      min-width: 60px;
+      min-height: 60px;
       object-fit: contain;
-      filter: grayscale(1) brightness(0.8);
-      transition: all 0.3s ease;
-    }
-
-    .badge-group img:hover {
-      filter: grayscale(0) brightness(1);
-      transform: scale(1.1);
     }
 
     @media (min-width: 768px) {
-      .badge-slider-container {
-        padding: 20px 0;
-      }
-      
       .badge-group {
-        gap: 40px;
-        padding: 0 20px;
+        gap: 2rem;
+        padding: 0 2rem;
       }
       
       .badge-group img {
-        height: 60px;
-      }
-    }
-
-    @media (min-resolution: 2dppx) {
-      .badge-group img {
-        height: 80px;
+        width: 80px !important;
+        height: 80px !important;
+        min-width: 80px;
+        min-height: 80px;
       }
     }
 
@@ -145,25 +135,21 @@
       }
     }
 
-    /* Optional fade edges */
+    /* Remove the fade edges */
     .badge-slider-container::before,
     .badge-slider-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 100px;
-      height: 100%;
-      z-index: 2;
+      display: none;
     }
 
-    .badge-slider-container::before {
-      left: 0;
-      background: linear-gradient(to right, rgb(0 0 0 / 0.5), transparent);
+    /* Update badge images */
+    .badge-group img.grayscale {
+      filter: grayscale(100%);
+      opacity: 0.7;
     }
 
-    .badge-slider-container::after {
-      right: 0;
-      background: linear-gradient(to left, rgb(0 0 0 / 0.5), transparent);
+    .badge-group img:hover {
+      filter: grayscale(0);
+      opacity: 1;
     }
 
     /* Custom reCAPTCHA styling */
@@ -223,6 +209,15 @@
       text-shadow: 0 0 20px rgba(0, 0, 0, 0.5),
                    0 0 30px rgba(0, 0, 0, 0.3);
     }
+
+    /* Badge slider section */
+    .badge-section {
+      height: auto;
+      min-height: 100px;
+      padding: 2rem 0;
+      width: 100%;
+      overflow: hidden;
+    }
   </style>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -281,11 +276,11 @@
 
   <main class="flex-1 overflow-x-hidden">
     <div class="w-full overflow-x-hidden">
-  <!-- Hero Section -->
+      <!-- Hero Section -->
       <section class="min-h-screen bg-black relative flex flex-col">
         <!-- Background gradient -->
         <div class="hero-gradient"></div>
-
+        
         <!-- Network SVG Background -->
         <div class="absolute inset-0 opacity-40 pointer-events-none overflow-hidden">
           <div class="absolute inset-0 scale-100 md:scale-125 -translate-y-[10%]">
@@ -311,65 +306,64 @@
           </div>
         </div>
 
-        <!-- Badge Slider Section -->
-        <div class="relative z-10">
-          <div class="w-full bg-black/50 backdrop-blur-sm overflow-hidden h-[80px] md:h-[200px]">
+        <!-- Badge Slider Section - now inside hero section -->
+        <div class="relative z-10 mb-12">
+          <h2 class="text-lg md:text-xl text-white/50 font-light text-center mb-6">Certified in enterprise automation and integration</h2>
+          <div class="w-full bg-transparent overflow-hidden">
             <div class="badge-slider-container">
               <div class="badge-track">
                 <!-- First set of badges -->
                 <div class="badge-group">
-                  <!-- Badges will be added here -->
                   <picture>
                     <source srcset="assets/badges/certified-content-marketing-specialist-retina.png 2x, assets/badges/certified-content-marketing-specialist-small.png 1x">
-                    <img src="assets/badges/certified-content-marketing-specialist-small.png" alt="Content Marketing Specialist" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/certified-content-marketing-specialist-small.png" alt="Content Marketing Specialist" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/certified-customer-acquisition-specialist-retina.png 2x, assets/badges/certified-customer-acquisition-specialist-small.png 1x">
-                    <img src="assets/badges/certified-customer-acquisition-specialist-small.png" alt="Customer Acquisition Specialist" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/certified-customer-acquisition-specialist-small.png" alt="Customer Acquisition Specialist" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/certified-customer-value-optimization-specialist-retina.png 2x, assets/badges/certified-customer-value-optimization-specialist-small.png 1x">
-                    <img src="assets/badges/certified-customer-value-optimization-specialist-small.png" alt="Customer Value Optimization Specialist" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/certified-customer-value-optimization-specialist-small.png" alt="Customer Value Optimization Specialist" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/direct-response-copywriting-specialist-retina.png 2x, assets/badges/direct-response-copywriting-specialist-small.png 1x">
-                    <img src="assets/badges/direct-response-copywriting-specialist-small.png" alt="Direct Response Copywriting Specialist" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/direct-response-copywriting-specialist-small.png" alt="Direct Response Copywriting Specialist" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/make-basics-2-an-introduction-to-data-types-and-dat-retina.png 2x, assets/badges/make-basics-2-an-introduction-to-data-types-and-dat-small.png 1x">
-                    <img src="assets/badges/make-basics-2-an-introduction-to-data-types-and-dat-small.png" alt="Make Basics: Data Types" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/make-basics-2-an-introduction-to-data-types-and-dat-small.png" alt="Make Basics: Data Types" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/make-basics-4-an-introduction-to-aggregators-retina.png 2x, assets/badges/make-basics-4-an-introduction-to-aggregators-small.png 1x">
-                    <img src="assets/badges/make-basics-4-an-introduction-to-aggregators-small.png" alt="Make Basics: Aggregators" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/make-basics-4-an-introduction-to-aggregators-small.png" alt="Make Basics: Aggregators" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                 </div>
                 <!-- Duplicate for seamless loop -->
                 <div class="badge-group" aria-hidden="true">
-                  <!-- Same badges duplicated -->
                   <picture>
                     <source srcset="assets/badges/certified-content-marketing-specialist-retina.png 2x, assets/badges/certified-content-marketing-specialist-small.png 1x">
-                    <img src="assets/badges/certified-content-marketing-specialist-small.png" alt="Content Marketing Specialist" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/certified-content-marketing-specialist-small.png" alt="Content Marketing Specialist" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/certified-customer-acquisition-specialist-retina.png 2x, assets/badges/certified-customer-acquisition-specialist-small.png 1x">
-                    <img src="assets/badges/certified-customer-acquisition-specialist-small.png" alt="Customer Acquisition Specialist" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/certified-customer-acquisition-specialist-small.png" alt="Customer Acquisition Specialist" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/certified-customer-value-optimization-specialist-retina.png 2x, assets/badges/certified-customer-value-optimization-specialist-small.png 1x">
-                    <img src="assets/badges/certified-customer-value-optimization-specialist-small.png" alt="Customer Value Optimization Specialist" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/certified-customer-value-optimization-specialist-small.png" alt="Customer Value Optimization Specialist" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/direct-response-copywriting-specialist-retina.png 2x, assets/badges/direct-response-copywriting-specialist-small.png 1x">
-                    <img src="assets/badges/direct-response-copywriting-specialist-small.png" alt="Direct Response Copywriting Specialist" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/direct-response-copywriting-specialist-small.png" alt="Direct Response Copywriting Specialist" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/make-basics-2-an-introduction-to-data-types-and-dat-retina.png 2x, assets/badges/make-basics-2-an-introduction-to-data-types-and-dat-small.png 1x">
-                    <img src="assets/badges/make-basics-2-an-introduction-to-data-types-and-dat-small.png" alt="Make Basics: Data Types" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/make-basics-2-an-introduction-to-data-types-and-dat-small.png" alt="Make Basics: Data Types" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                   <picture>
                     <source srcset="assets/badges/make-basics-4-an-introduction-to-aggregators-retina.png 2x, assets/badges/make-basics-4-an-introduction-to-aggregators-small.png 1x">
-                    <img src="assets/badges/make-basics-4-an-introduction-to-aggregators-small.png" alt="Make Basics: Aggregators" loading="lazy" class="h-8 md:h-12">
+                    <img src="assets/badges/make-basics-4-an-introduction-to-aggregators-small.png" alt="Make Basics: Aggregators" loading="lazy" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                   </picture>
                 </div>
               </div>
