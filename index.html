@@ -528,9 +528,11 @@
             <h2 class="text-4xl font-light mb-8">Let's move what matters to you</h2>
             <p class="text-white/70 text-lg mb-12">Ready to start your journey towards automated excellence? Get in touch with our team.</p>
             <form id="contactForm" action="https://formspree.io/f/xgvadbld" method="POST" class="space-y-4">
+              <!-- Honeypot field - hidden from users but trips up bots -->
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
               <input type="text" name="name" placeholder="Name" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-white/30">
               <input type="email" name="email" placeholder="Email" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-white/30">
-              <input type="hidden" id="formTimestamp" name="timestamp">
+              <input type="hidden" id="formTimestamp" name="_timestamp">
               <div class="relative">
                 <select name="subject" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-white/30 appearance-none">
                   <option value="" disabled selected>Select a subject</option>
@@ -627,6 +629,9 @@
       
       try {
         const formData = new FormData(contactForm);
+        // Add reCAPTCHA response to a hidden field
+        formData.append('g-recaptcha-response', recaptchaResponse);
+        
         const response = await fetch(contactForm.action, {
           method: 'POST',
           body: formData,
@@ -640,6 +645,7 @@
           successMessage.classList.remove('hidden');
           contactForm.reset();
           grecaptcha.reset(); // Reset reCAPTCHA
+          formTimestamp.value = Date.now(); // Reset timestamp
           
           // Hide success message after 5 seconds
           setTimeout(() => {
