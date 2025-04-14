@@ -713,7 +713,9 @@
           }
         });
 
-        if (response.ok) {
+        const data = await response.json();
+        
+        if (response.ok && data.ok) {
           // Show success message
           successMessage.classList.remove('hidden');
           contactForm.reset();
@@ -723,10 +725,12 @@
             successMessage.classList.add('hidden');
           }, 5000);
         } else {
-          throw new Error('Form submission failed');
+          console.error('Form submission failed:', data);
+          throw new Error(data.error || 'Form submission failed');
         }
       } catch (error) {
         console.error('Error:', error);
+        errorMessage.textContent = error.message || 'There was a problem submitting the form. Please try again.';
         errorMessage.classList.remove('hidden');
       } finally {
         // Reset button state
