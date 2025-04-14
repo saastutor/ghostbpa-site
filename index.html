@@ -612,7 +612,18 @@
         mobileMenu.classList.add('hidden');
       }
     });
+  </script>
 
+  <!-- Include the header and footer components -->
+  <script src="/components/header.js"></script>
+  <script src="/components/footer.js"></script>
+  <script>
+    // Initialize the header and footer
+    window.initHeader();
+    window.initFooter();
+  </script>
+
+  <script>
     // Form submission handling
     const contactForm = document.getElementById('contactForm');
     const submitButton = document.getElementById('submitButton');
@@ -653,15 +664,6 @@
         errorMessage.classList.remove('hidden');
       }
     });
-  </script>
-
-  <!-- Include the header and footer components -->
-  <script src="/components/header.js"></script>
-  <script src="/components/footer.js"></script>
-  <script>
-    // Initialize the header and footer
-    window.initHeader();
-    window.initFooter();
   </script>
 </body>
 </html> 
