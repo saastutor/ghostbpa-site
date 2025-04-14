@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+        <!-- Gradients -->
+        <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#111111;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+        </linearGradient>
+
+        <!-- Node Gradient -->
+        <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1">
+                <animate attributeName="stop-color" values="#ffffff;#64B5F6;#ffffff" dur="2s" repeatCount="indefinite"/>
+            </stop>
+            <stop offset="100%" style="stop-color:#64B5F6;stop-opacity:1">
+                <animate attributeName="stop-color" values="#64B5F6;#2196F3;#64B5F6" dur="2s" repeatCount="indefinite"/>
+            </stop>
+        </linearGradient>
+        
+        <!-- Glow Filter -->
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Node Animation -->
+        <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.4   0 1 0 0 0   1 0 1 0 1  0 0 0 5 -2"/>
+        </filter>
+    </defs>
+
+    <!-- Background with gradient -->
+    <rect width="100%" height="100%" fill="url(#backgroundGradient)"/>
+
+    <!-- Rays of light -->
+    <g opacity="0.15">
+        <path d="M0 0 L1920 1080" stroke="#333333" stroke-width="200" filter="blur(50px)">
+            <animate attributeName="opacity" values="0.1;0.2;0.1" dur="5s" repeatCount="indefinite"/>
+        </path>
+        <path d="M1920 0 L0 1080" stroke="#222222" stroke-width="250" filter="blur(40px)">
+            <animate attributeName="opacity" values="0.15;0.25;0.15" dur="7s" repeatCount="indefinite"/>
+        </path>
+    </g>
+
+    <!-- Network Grid -->
+    <g id="network" filter="url(#glow)">
+        <!-- Dynamic Nodes -->
+        <g class="nodes">
+            <!-- Main convergence nodes -->
+            <g transform="translate(960 540)">
+                <!-- Database base ellipse -->
+                <ellipse cx="0" cy="2" rx="8" ry="3" fill="url(#nodeGradient)" filter="url(#nodeGlow)">
+                    <animate attributeName="ry" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                </ellipse>
+                <!-- Database body -->
+                <path d="M-8 -4 Q-8 2 -8 2 Q-8 8 0 8 Q8 8 8 2 Q8 2 8 -4 Q8 -8 0 -8 Q-8 -8 -8 -4Z" 
+                      fill="url(#nodeGradient)" filter="url(#nodeGlow)" opacity="0.9">
+                    <animate attributeName="d" 
+                        values="M-8 -4 Q-8 2 -8 2 Q-8 8 0 8 Q8 8 8 2 Q8 2 8 -4 Q8 -8 0 -8 Q-8 -8 -8 -4Z;
+                                M-7 -4 Q-7 2 -7 2 Q-7 7 0 7 Q7 7 7 2 Q7 2 7 -4 Q7 -7 0 -7 Q-7 -7 -7 -4Z;
+                                M-8 -4 Q-8 2 -8 2 Q-8 8 0 8 Q8 8 8 2 Q8 2 8 -4 Q8 -8 0 -8 Q-8 -8 -8 -4Z" 
+                        dur="2s" repeatCount="indefinite"/>
+                </path>
+                <!-- Middle line -->
+                <path d="M-8 -1 Q-8 2 0 2 Q8 2 8 -1" 
+                      stroke="#ffffff" stroke-width="0.5" fill="none" opacity="0.3">
+                    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
+                </path>
+            </g>
+            <circle cx="800" cy="400" r="6" fill="#ffffff" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="1100" cy="600" r="5" fill="#ffffff" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="3;5;3" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Left system nodes -->
+            <circle cx="300" cy="700" r="4" fill="#ffffff" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="400" cy="800" r="5" fill="#ffffff" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="4;5;4" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="500" cy="600" r="4" fill="#ffffff" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="3;4;3" dur="3.2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Right system nodes -->
+            <circle cx="1400" cy="300" r="5" fill="#ffffff" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="4;5;4" dur="2.3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="1300" cy="400" r="4" fill="#ffffff" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="3;4;3" dur="2.7s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="1500" cy="450" r="6" fill="#ffffff" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="5;6;5" dur="3.1s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- New plateau nodes for northeast path -->
+            <circle cx="1200" cy="400" r="5" fill="url(#nodeGradient)" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="1500" cy="400" r="5" fill="url(#nodeGradient)" filter="url(#nodeGlow)">
+                <animate attributeName="r" values="4;6;4" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+        </g>
+
+        <!-- Connecting Lines -->
+        <g class="connections" stroke="#ffffff" stroke-width="2" opacity="0.4">
+            <!-- Main convergence connections -->
+            <path d="M960 540 L800 400">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3s" repeatCount="indefinite"/>
+            </path>
+            <path d="M960 540 L1100 600">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="4s" repeatCount="indefinite"/>
+            </path>
+            
+            <!-- Left system connections -->
+            <path d="M300 700 L400 800">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3.5s" repeatCount="indefinite"/>
+            </path>
+            <path d="M400 800 L500 600">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="2.8s" repeatCount="indefinite"/>
+            </path>
+            <path d="M500 600 L800 400">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="4.2s" repeatCount="indefinite"/>
+            </path>
+            
+            <!-- Right system connections -->
+            <path d="M1400 300 L1300 400">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3.3s" repeatCount="indefinite"/>
+            </path>
+            <path d="M1300 400 L1500 450">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3.7s" repeatCount="indefinite"/>
+            </path>
+            <path d="M1300 400 L1100 600">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="4.5s" repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Floating Particles -->
+        <g class="particles">
+            <!-- Main convergence particles -->
+            <circle cx="0" cy="0" r="2" fill="#ffffff">
+                <animateMotion path="M960 540 C 800 400, 1100 600, 960 540" dur="5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="2" fill="#ffffff">
+                <animateMotion path="M800 400 C 1100 600, 960 540, 800 400" dur="7s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Left system particles -->
+            <circle cx="0" cy="0" r="1.5" fill="#ffffff">
+                <animateMotion path="M300 700 C 400 800, 500 600, 800 400" dur="6s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="1.5" fill="#ffffff">
+                <animateMotion path="M500 600 C 600 500, 700 450, 800 400" dur="5.5s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Right system particles -->
+            <circle cx="0" cy="0" r="1.5" fill="#ffffff">
+                <animateMotion path="M1400 300 C 1300 400, 1200 500, 1100 600" dur="6.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="1.5" fill="#ffffff">
+                <animateMotion path="M1500 450 C 1400 500, 1200 550, 1100 600" dur="7.5s" repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </g>
+
+    <!-- Modified Northeast Flow Path with plateaus -->
+    <path d="M200 900 Q 600 700 960 540 T 1200 400 L 1500 400 L 1800 350" 
+          stroke="#ffffff" stroke-width="4" fill="none" opacity="0.3">
+        <animate attributeName="stroke-dasharray" values="0,3000;3000,0" dur="10s" repeatCount="indefinite"/>
+    </path>
+</svg> 
