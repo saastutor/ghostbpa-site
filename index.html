@@ -870,7 +870,7 @@
           <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-3xl md:text-5xl font-light mb-8 text-shadow-hero">Let's Transform Your Business</h2>
             <p class="text-xl md:text-2xl text-white/70 mb-12 text-shadow-hero">Get a free process analysis and discover how we can save your team 20+ hours per week.</p>
-            <form id="contactForm" action="https://formspree.io/f/xgvadbld" method="POST" class="space-y-4">
+            <form id="contactForm" action="https://formspree.io/f/xgvadbld" method="POST" class="space-y-4" onsubmit="return false;">
               <!-- Honeypot field - hidden from users but trips up bots -->
               <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1042,6 +1042,8 @@
         submitButton.disabled = false;
         submitButton.innerHTML = 'Get Your Free Process Analysis';
       }
+
+      return false; // Prevent form from submitting traditionally
     });
   </script>
 
