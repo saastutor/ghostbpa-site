@@ -263,8 +263,14 @@
     /* Update tool tile animations */
     .tool-tile {
       position: relative;
-      height: 120px;
+      height: 90px;
       overflow: hidden;
+    }
+    
+    @media (min-width: 768px) {
+      .tool-tile {
+        height: 120px;
+      }
     }
     
     .tool-tile-content {
@@ -275,23 +281,29 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.3s ease;
-      padding: 1rem;
+      padding: 0.75rem;
+    }
+    
+    @media (min-width: 768px) {
+      .tool-tile-content {
+        padding: 1rem;
+      }
     }
     
     .tool-tile:hover .tool-tile-content {
-      transform: translateY(-12px);
+      transform: translateY(-8px);
     }
     
     .tool-subtitle {
       position: absolute;
-      bottom: 0.75rem;
+      bottom: 0.5rem;
       left: 0;
       right: 0;
       text-align: center;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.3s ease;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       line-height: 1.2;
       color: rgba(255, 255, 255, 0.7);
       padding: 0 0.5rem;
@@ -312,7 +324,7 @@
 
     .tool-title {
       transition: all 0.3s ease;
-      font-size: 1.25rem;
+      font-size: 1rem;
       line-height: 1.2;
       text-align: center;
     }
@@ -325,6 +337,16 @@
 
     .tool-tile:hover .tool-title {
       transform: scale(0.95);
+    }
+
+    /* Add scroll margin for anchor links */
+    [id] {
+      scroll-margin-top: 8rem;
+    }
+    @media (max-width: 768px) {
+      [id] {
+        scroll-margin-top: 6rem;
+      }
     }
   </style>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -343,10 +365,18 @@
             </a>
           </div>
         </div>
-        <div class="hidden md:flex items-center space-x-6">
-          <a href="#tech-stack" class="text-white/70 hover:text-white transition-colors duration-200">
-            Tools
-          </a>
+        <div class="hidden md:flex items-center space-x-8 text-lg">
+          <div class="flex-1 flex justify-center space-x-8">
+            <a href="#sales-tools" class="text-white/70 hover:text-white transition-colors duration-200">
+              Sales Tools
+            </a>
+            <a href="#operations" class="text-white/70 hover:text-white transition-colors duration-200">
+              Operations
+            </a>
+            <a href="#infrastructure" class="text-white/70 hover:text-white transition-colors duration-200">
+              Infrastructure
+            </a>
+          </div>
           <a href="#contact" class="border border-white/20 hover:bg-white/10 text-white font-light py-2 px-6 rounded-full transition-colors">
             Contact Us
           </a>
@@ -367,7 +397,9 @@
       <!-- Mobile menu -->
       <div id="mobileMenu" class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
-          <a href="#tech-stack" class="block px-3 py-2 rounded-md text-base font-light text-white border border-white/20 hover:bg-white/10">Tools</a>
+          <a href="#sales-tools" class="block px-3 py-2 rounded-md text-base font-light text-white border border-white/20 hover:bg-white/10">Sales Tools</a>
+          <a href="#operations" class="block px-3 py-2 rounded-md text-base font-light text-white border border-white/20 hover:bg-white/10">Operations</a>
+          <a href="#infrastructure" class="block px-3 py-2 rounded-md text-base font-light text-white border border-white/20 hover:bg-white/10">Infrastructure</a>
           <a href="#contact" class="block px-3 py-2 rounded-md text-base font-light text-white border border-white/20 hover:bg-white/10">Contact Us</a>
           <a href="https://github.com/stevenfage" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-base font-light text-white hover:bg-white/10">
             <div class="flex items-center">
@@ -401,9 +433,9 @@
         </div>
 
         <!-- Main content with perfect centering -->
-        <div class="flex-1 flex items-center justify-center relative z-10 mt-16">
+        <div class="flex-1 flex items-center justify-center relative z-10 mt-16 md:mt-16 pt-12 md:pt-0">
           <div class="max-w-[1080px] mx-auto px-6 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-6xl md:text-8xl font-extralight mb-4">
+            <h1 class="text-6xl md:text-8xl font-extralight mb-4 mt-8 md:mt-0">
               <span>
                 <span class="ghost-text text-white text-shadow-hero"><span>G</span><span>host</span></span><span class="bpa-text text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] ml-1 text-shadow-hero">BPA</span>
               </span>
@@ -751,7 +783,7 @@
           <div class="w-1/2 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mx-auto mb-16"></div>
           
           <!-- CRM Sales & Marketing -->
-          <div class="mb-16">
+          <div id="sales-tools" class="mb-16 scroll-mt-32">
             <div class="flex items-center gap-4 mb-4">
               <i class="fas fa-bullseye text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
               <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">We specialize in tools you already use — or should be using.</h2>
@@ -817,7 +849,7 @@
           <div class="w-1/2 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mx-auto mb-16"></div>
 
           <!-- Tools -->
-          <div class="mb-16">
+          <div id="operations" class="mb-16 scroll-mt-32">
             <div class="flex items-center gap-4 mb-4">
               <i class="fas fa-wrench text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
               <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">Connect the stack. Clear the clutter.</h2>
@@ -889,7 +921,7 @@
           <div class="w-1/2 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mx-auto mb-16"></div>
 
           <!-- Development -->
-          <div class="mb-16">
+          <div id="infrastructure" class="mb-16 scroll-mt-32">
             <div class="flex items-center gap-4 mb-4">
               <i class="fas fa-code text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
               <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">Built on rock-solid infrastructure.</h2>
@@ -977,42 +1009,42 @@
               </div>
               <div class="space-y-3">
                 <p class="text-white/70 text-center font-bold">Which areas need the most time or have the highest risk?</p>
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 max-w-[800px] mx-auto">
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="ar_invoicing" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">AR/Invoicing Automation</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-[800px] mx-auto">
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="ar_invoicing" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">AR/Invoicing Automation</span>
                   </label>
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="crm_sync" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">CRM Data Synchronization</span>
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="crm_sync" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">CRM Data Synchronization</span>
                   </label>
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="customer_onboarding" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">Customer Onboarding</span>
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="customer_onboarding" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">Customer Onboarding</span>
                   </label>
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="document_management" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">Document Management</span>
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="document_management" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">Document Management</span>
                   </label>
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="inventory_management" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">Inventory Management</span>
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="inventory_management" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">Inventory Management</span>
                   </label>
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="lead_qualification" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">Lead Qualification & Scoring</span>
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="lead_qualification" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">Lead Qualification & Scoring</span>
                   </label>
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="order_processing" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">Order Processing</span>
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="order_processing" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">Order Processing</span>
                   </label>
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="quote_management" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">Quote/Estimate Management</span>
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="quote_management" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">Quote/Estimate Management</span>
                   </label>
-                  <label class="flex items-center space-x-3 min-w-[250px]">
-                    <input type="checkbox" name="use_cases" value="other" class="w-4 h-4 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
-                    <span class="text-white/70 text-sm md:text-base whitespace-nowrap">Other (Please specify)</span>
+                  <label class="flex items-start gap-3">
+                    <input type="checkbox" name="use_cases" value="other" class="w-4 h-4 mt-1 bg-white/5 border-white/10 rounded focus:ring-[#2E3BFF]">
+                    <span class="text-white/70 text-sm leading-tight">Other (Please specify)</span>
                   </label>
                 </div>
               </div>
@@ -1043,6 +1075,13 @@
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(e) {
       if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+
+    // Close mobile menu when clicking any link inside it
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
         mobileMenu.classList.add('hidden');
       }
     });
@@ -1116,10 +1155,10 @@
 
   <!-- Mobile Sticky CTA -->
   <div class="md:hidden fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-white/10 p-4 z-50 hidden">
-    <div class="flex items-center justify-between max-w-[1080px] mx-auto px-4">
-      <p class="text-white/90">Ready to save 20+ hours/week?</p>
-      <a href="#contact" class="px-4 py-2 bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] text-white font-medium rounded-lg hover:opacity-90 transition-all duration-300">
-        Book Your Blueprint
+    <div class="flex items-center justify-between gap-4 max-w-[1080px] mx-auto px-4">
+      <p class="text-white/90 text-base whitespace-nowrap flex-shrink-0 pl-2">Save 20+ hours/week?</p>
+      <a href="#contact" class="whitespace-nowrap px-4 py-2 bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] text-white font-medium rounded-lg hover:opacity-90 transition-all duration-300">
+        Book Blueprint
       </a>
     </div>
   </div>
