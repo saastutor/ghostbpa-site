@@ -265,6 +265,8 @@
       position: relative;
       height: 90px;
       overflow: hidden;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
     
     @media (min-width: 768px) {
@@ -280,7 +282,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s ease;
       padding: 0.75rem;
     }
     
@@ -290,53 +291,35 @@
       }
     }
     
-    .tool-tile:hover .tool-tile-content {
-      transform: translateY(-8px);
-    }
-    
     .tool-subtitle {
-      position: absolute;
-      bottom: 0.5rem;
-      left: 0;
-      right: 0;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s ease;
       font-size: 0.7rem;
       line-height: 1.2;
-      color: rgba(255, 255, 255, 0.7);
-      padding: 0 0.5rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      margin-top: 0.5rem;
     }
     
     @media (min-width: 768px) {
       .tool-subtitle {
         font-size: 0.875rem;
-        bottom: 1rem;
-        padding: 0 1rem;
       }
     }
 
-    .tool-tile:hover .tool-subtitle {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     .tool-title {
-      transition: all 0.3s ease;
       font-size: 1rem;
       line-height: 1.2;
       text-align: center;
+      font-weight: 300;
+      background: linear-gradient(to right, #2E3BFF, #00E5FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     @media (min-width: 768px) {
       .tool-title {
         font-size: 1.875rem;
       }
-    }
-
-    .tool-tile:hover .tool-title {
-      transform: scale(0.95);
     }
 
     /* Add scroll margin for anchor links */
@@ -368,7 +351,7 @@
         <div class="hidden md:flex items-center space-x-8 text-lg">
           <div class="flex-1 flex justify-center space-x-8">
             <a href="#sales-tools" class="text-white/70 hover:text-white transition-colors duration-200">
-              Sales Tools
+              Revenue
             </a>
             <a href="#operations" class="text-white/70 hover:text-white transition-colors duration-200">
               Operations
@@ -785,61 +768,72 @@
           <!-- CRM Sales & Marketing -->
           <div id="sales-tools" class="mb-16 scroll-mt-32">
             <div class="flex items-center gap-4 mb-4">
-              <i class="fas fa-bullseye text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
-              <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">We specialize in tools you already use — or should be using.</h2>
+              <i class="fas fa-bullseye text-4xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] md:h-auto h-full flex items-center"></i>
+              <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">
+                GhostFlow - <br class="md:hidden">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Revenue Driving Tools</span>
+              </h2>
             </div>
             <!-- Sales Copy -->
             <div class="mb-8">
-              <h3 class="text-2xl md:text-3xl font-light mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] text-shadow-hero">From high-end CRMs to no-fluff sales platforms</h3>
-              <p class="text-xl md:text-2xl text-white/70 leading-relaxed text-shadow-hero">We build microservices around the tools your business already trusts, ensuring seamless integration and reliable performance.</p>
+              <p class="text-xl md:text-2xl text-white/70 leading-relaxed text-shadow-hero mb-4">Finally getting your CRM to do the work - no more manual data entry.</p>
+              <p class="text-lg text-white/60 leading-relaxed text-shadow-hero">Your CRM should be your revenue engine, not a data entry nightmare. We connect your sales tools to the rest of your business, automating the workflows that actually drive growth. No more abandoned tools or wasted potential.</p>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">
-                    <span class="md:hidden">Active<br>Campaign</span>
-                    <span class="hidden md:inline">ActiveCampaign</span>
-                  </h3>
-                  <div class="tool-subtitle">Email Marketing & Automation</div>
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-4">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">ActiveCampaign</span>
+                  <span class="text-sm text-white/50 ml-2">Email Marketing</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Pipedrive</h3>
-                  <div class="tool-subtitle">Sales Pipeline Management</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">LinkedIn</span>
+                  <span class="text-sm text-white/50 ml-2">Professional Network</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Salesforce</h3>
-                  <div class="tool-subtitle">Enterprise CRM</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Pipedrive</span>
+                  <span class="text-sm text-white/50 ml-2">Sales Pipeline</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">SugarCRM</h3>
-                  <div class="tool-subtitle">Customizable CRM</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Salesforce</span>
+                  <span class="text-sm text-white/50 ml-2">Enterprise CRM</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">
-                    <span class="md:hidden">Woo<br>Commerce</span>
-                    <span class="hidden md:inline">WooCommerce</span>
-                  </h3>
-                  <div class="tool-subtitle">E-commerce Platform</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">SugarCRM</span>
+                  <span class="text-sm text-white/50 ml-2">Customizable CRM</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">WordPress</h3>
-                  <div class="tool-subtitle">Content Management</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">WooCommerce</span>
+                  <span class="text-sm text-white/50 ml-2">E-commerce Platform</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Zoho CRM</h3>
-                  <div class="tool-subtitle">All-in-One CRM</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">WordPress</span>
+                  <span class="text-sm text-white/50 ml-2">Content Management</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Zoho CRM</span>
+                  <span class="text-sm text-white/50 ml-2">All-in-One CRM</span>
                 </div>
               </div>
             </div>
@@ -851,67 +845,86 @@
           <!-- Tools -->
           <div id="operations" class="mb-16 scroll-mt-32">
             <div class="flex items-center gap-4 mb-4">
-              <i class="fas fa-wrench text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
-              <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">Connect the stack. Clear the clutter.</h2>
+              <i class="fas fa-layer-group text-4xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] md:h-auto h-full flex items-center"></i>
+              <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">
+                GhostStack - <br class="md:hidden">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Clear the Clutter</span>
+              </h2>
             </div>
             <!-- Sales Copy -->
             <div class="mb-8">
-              <h3 class="text-2xl md:text-3xl font-light mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] text-shadow-hero">Seamless integration across your tools</h3>
-              <p class="text-xl md:text-2xl text-white/70 leading-relaxed text-shadow-hero">These are just a few of the tools we've integrated into seamless microservice systems — reducing busywork, syncing data, and keeping your team in flow.</p>
+              <p class="text-xl md:text-2xl text-white/70 leading-relaxed text-shadow-hero mb-4">Seamless operations across your tools - we connect the dots so you don't have to.</p>
+              <p class="text-lg text-white/60 leading-relaxed text-shadow-hero">Your tools should work together, not create more work. We automate the connections between your systems, eliminating manual data transfers and duplicate entries. No more juggling between platforms or lost information.</p>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Airtable</h3>
-                  <div class="tool-subtitle">Database Management</div>
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-4">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Airtable</span>
+                  <span class="text-sm text-white/50 ml-2">Database Management</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Asana</h3>
-                  <div class="tool-subtitle">Project Management</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Asana</span>
+                  <span class="text-sm text-white/50 ml-2">Project Management</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Cal.com</h3>
-                  <div class="tool-subtitle">Meeting Scheduling</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Cal.com</span>
+                  <span class="text-sm text-white/50 ml-2">Meeting Scheduling</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Calendly</h3>
-                  <div class="tool-subtitle">Appointment Booking</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Calendly</span>
+                  <span class="text-sm text-white/50 ml-2">Appointment Booking</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Google Docs</h3>
-                  <div class="tool-subtitle">Document Creation</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Google Docs</span>
+                  <span class="text-sm text-white/50 ml-2">Document Creation</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Google Sheets</h3>
-                  <div class="tool-subtitle">Spreadsheet Management</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Google Sheets</span>
+                  <span class="text-sm text-white/50 ml-2">Spreadsheet Management</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Notion</h3>
-                  <div class="tool-subtitle">Knowledge Management</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Notion</span>
+                  <span class="text-sm text-white/50 ml-2">Knowledge Management</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">QuickBooks Online</h3>
-                  <div class="tool-subtitle">Accounting Software</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">QuickBooks Online</span>
+                  <span class="text-sm text-white/50 ml-2">Accounting Software</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Zendesk</h3>
-                  <div class="tool-subtitle">Customer Support</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Zendesk</span>
+                  <span class="text-sm text-white/50 ml-2">Customer Support</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-ellipsis-h text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Many more</span>
+                  <span class="text-sm text-white/50 ml-2">Additional Tools</span>
                 </div>
               </div>
             </div>
@@ -923,55 +936,65 @@
           <!-- Development -->
           <div id="infrastructure" class="mb-16 scroll-mt-32">
             <div class="flex items-center gap-4 mb-4">
-              <i class="fas fa-code text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
-              <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">Built on rock-solid infrastructure.</h2>
+              <i class="fas fa-microchip text-4xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] md:h-auto h-full flex items-center"></i>
+              <h2 class="text-3xl md:text-4xl font-light text-white/90 text-shadow-hero">
+                GhostCore - <br class="md:hidden">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Engineer-Grade Solutions</span>
+              </h2>
             </div>
             <!-- Sales Copy -->
             <div class="mb-8">
-              <h3 class="text-2xl md:text-3xl font-light mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] text-shadow-hero">Enterprise-grade engineering</h3>
-              <p class="text-xl md:text-2xl text-white/70 leading-relaxed text-shadow-hero">We engineer backend systems using scalable, resilient tools — from edge deployments to backend automations — tailored for your environment.</p>
+              <p class="text-xl md:text-2xl text-white/70 leading-relaxed text-shadow-hero mb-4">No more MacGyver-style setups. Our system handles it.</p>
+              <p class="text-lg text-white/60 leading-relaxed text-shadow-hero">Your infrastructure should be rock-solid, not held together with duct tape. We build engineer-grade systems that scale with your business, without the enterprise complexity. No more worrying about system reliability or maintenance.</p>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Cloudflare Workers</h3>
-                  <div class="tool-subtitle">Edge Computing</div>
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-4">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Cloudflare Workers</span>
+                  <span class="text-sm text-white/50 ml-2">Edge Computing</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">JavaScript</h3>
-                  <div class="tool-subtitle">Frontend & Backend</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Digital Ocean + AWS</span>
+                  <span class="text-sm text-white/50 ml-2">Managed Hosting</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Make.com</h3>
-                  <div class="tool-subtitle">Workflow Automation</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">JavaScript</span>
+                  <span class="text-sm text-white/50 ml-2">Frontend & Backend</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Python</h3>
-                  <div class="tool-subtitle">Data Processing</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Make.com</span>
+                  <span class="text-sm text-white/50 ml-2">Workflow Automation</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Railway</h3>
-                  <div class="tool-subtitle">Cloud Deployment</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Python</span>
+                  <span class="text-sm text-white/50 ml-2">Data Processing</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">VS Code</h3>
-                  <div class="tool-subtitle">Code Editor</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">Railway</span>
+                  <span class="text-sm text-white/50 ml-2">Cloud Deployment</span>
                 </div>
               </div>
-              <div class="bg-gradient-to-b from-[#1a1f2d]/90 to-[#1a1f2d]/40 backdrop-blur-sm border border-white/10 rounded-xl group hover:border-white/20 transition-all duration-300 tool-tile">
-                <div class="tool-tile-content">
-                  <h3 class="tool-title text-2xl md:text-3xl font-light text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF] group-hover:text-white group-hover:bg-none transition-colors duration-300">Zapier</h3>
-                  <div class="tool-subtitle">App Integration</div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-bolt text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]"></i>
+                <div>
+                  <span class="text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#2E3BFF] to-[#00E5FF]">VS Code</span>
+                  <span class="text-sm text-white/50 ml-2">Code Editor</span>
                 </div>
               </div>
             </div>
