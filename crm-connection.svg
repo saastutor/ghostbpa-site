@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="400" fill="#f8f9fa"/>
+    
+    <!-- CRM Logo Container (Pipedrive) -->
+    <g transform="translate(100,150)">
+        <rect width="200" height="100" rx="10" fill="white" stroke="#e6e9ec" stroke-width="2"/>
+        <!-- Image placeholder - commented out for now -->
+        <!-- <image href="" x="25" y="25" width="150" height="50"/> -->
+    </g>
+
+    <!-- Business Tools Container -->
+    <g transform="translate(500,125)">
+        <!-- Tools Grid -->
+        <g transform="translate(0,0)">
+            <rect width="90" height="45" rx="5" fill="white" stroke="#e6e9ec" stroke-width="2"/>
+            <text x="45" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Sheets</text>
+        </g>
+        <g transform="translate(100,0)">
+            <rect width="90" height="45" rx="5" fill="white" stroke="#e6e9ec" stroke-width="2"/>
+            <text x="45" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Docs</text>
+        </g>
+        <g transform="translate(0,55)">
+            <rect width="90" height="45" rx="5" fill="white" stroke="#e6e9ec" stroke-width="2"/>
+            <text x="45" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Calendar</text>
+        </g>
+        <g transform="translate(100,55)">
+            <rect width="90" height="45" rx="5" fill="white" stroke="#e6e9ec" stroke-width="2"/>
+            <text x="45" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Email</text>
+        </g>
+    </g>
+
+    <!-- Ghost Icon (GhostBPA) -->
+    <g transform="translate(350,150)">
+        <circle cx="50" cy="50" r="40" fill="white" stroke="#2E3BFF" stroke-width="2"/>
+        <path d="M50,25 C35,25 25,35 25,50 C25,65 35,75 50,75 L50,85 C50,85 65,75 70,70 C75,65 75,60 75,50 C75,35 65,25 50,25 Z" 
+              fill="#2E3BFF"/>
+        <circle cx="40" cy="45" r="3" fill="white"/>
+        <circle cx="60" cy="45" r="3" fill="white"/>
+    </g>
+
+    <!-- Connection Lines -->
+    <g stroke="#2E3BFF" stroke-width="2" fill="none">
+        <!-- Left connection -->
+        <path d="M300,200 L350,200" stroke-dasharray="5,5"/>
+        <!-- Right connections -->
+        <path d="M400,200 L500,147.5" stroke-dasharray="5,5"/>
+        <path d="M400,200 L600,147.5" stroke-dasharray="5,5"/>
+        <path d="M400,200 L500,202.5" stroke-dasharray="5,5"/>
+        <path d="M400,200 L600,202.5" stroke-dasharray="5,5"/>
+    </g>
+
+    <!-- Labels -->
+    <g font-family="Arial, sans-serif" font-size="14" fill="#333">
+        <text x="400" y="130" text-anchor="middle">GhostBPA</text>
+        <text x="200" y="280" text-anchor="middle">Your CRM</text>
+        <text x="595" y="280" text-anchor="middle">Business Tools</text>
+    </g>
+</svg> 
