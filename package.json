@@ -1,11 +1,12 @@
 {
   "name": "ghostbpa-site",
   "version": "1.0.0",
-  "description": "Ghost Business Process Automation website",
+  "description": "GhostBPA Website",
   "main": "index.js",
   "scripts": {
     "dev": "npx tailwindcss -i ./css/styles.css -o ./css/output.css --watch",
-    "build": "npx tailwindcss -i ./css/styles.css -o ./css/output.css --minify"
+    "build": "npx tailwindcss -i ./css/styles.css -o ./css/output.css --minify",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "keywords": [
     "business",
