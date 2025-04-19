@@ -1,0 +1,126 @@
+{
+  "name": "WooCommerce to Airtable Order Processing",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "resource": "order",
+        "operation": "getAll",
+        "options": {
+          "limit": 10
+        }
+      },
+      "name": "WooCommerce",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json[\"status\"]}}",
+              "value2": "processing"
+            }
+          ]
+        }
+      },
+      "name": "Filter",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "resource": "record",
+        "operation": "create",
+        "table": "Orders",
+        "data": {
+          "Order ID": "={{$json[\"id\"]}}",
+          "Customer Name": "={{$json[\"billing\"][\"first_name\"]}} {{$json[\"billing\"][\"last_name\"]}}",
+          "Email": "={{$json[\"billing\"][\"email\"]}}",
+          "Total": "={{$json[\"total\"]}}",
+          "Status": "={{$json[\"status\"]}}",
+          "Date": "={{$json[\"date_created\"]}}"
+        }
+      },
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 1,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "resource": "message",
+        "operation": "post",
+        "channel": "orders",
+        "text": "New order processed: Order #{{$json[\"id\"]}} from {{$json[\"billing\"][\"first_name\"]}} {{$json[\"billing\"][\"last_name\"]}}"
+      },
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [
+        850,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "WooCommerce": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "tags": [
+    "WooCommerce",
+    "Airtable",
+    "Orders"
+  ]
+} 
