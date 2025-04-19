@@ -13,10 +13,10 @@ const footerHTML = `
           © 2024 Ghost BPA LLC. All rights reserved.
         </p>
         <div class="mt-4 flex justify-center space-x-6 md:mt-0">
-          <a href="/privacy-policy.html" class="text-white/50 hover:text-white transition-colors duration-200">
+          <a href="privacy-policy.html" class="text-white/50 hover:text-white transition-colors duration-200">
             Privacy Policy
           </a>
-          <a href="/terms.html" class="text-white/50 hover:text-white transition-colors duration-200">
+          <a href="terms.html" class="text-white/50 hover:text-white transition-colors duration-200">
             Terms
           </a>
         </div>
