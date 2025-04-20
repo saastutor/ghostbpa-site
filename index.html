@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://ghostbpa.com" crossorigin>
   <link rel="dns-prefetch" href="https://ghostbpa.com">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-  <link rel="preload" href="/assets/images/responsive/head2-optimized-small.webp" as="image" type="image/webp">
+  <link rel="preload" href="/assets/images/responsive/head2-optimized-small.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="/assets/images/responsive/GhostBPA-social-preview-wide-1200.png" as="image" type="image/png">
   
   <!-- Favicon -->
@@ -786,24 +786,23 @@
           <div class="absolute inset-0 bg-black/60 z-10"></div>
           
           <!-- Background image -->
-          <picture>
-            <source 
-              type="image/webp"
-              srcset="
-                assets/images/responsive/head2-optimized-320.webp 320w,
-                assets/images/responsive/head2-optimized-640.webp 640w,
-                assets/images/responsive/head2-optimized-1024.webp 1024w,
-                assets/images/responsive/head2-optimized-1280.webp 1280w,
-                assets/images/responsive/head2-optimized-1920.webp 1920w
-              "
+          <picture class="hero-image">
+            <source
+              srcset="/assets/images/responsive/head2-optimized-320.webp 320w,
+                      /assets/images/responsive/head2-optimized-640.webp 640w,
+                      /assets/images/responsive/head2-optimized-1024.webp 1024w,
+                      /assets/images/responsive/head2-optimized-1280.webp 1280w,
+                      /assets/images/responsive/head2-optimized-1920.webp 1920w"
               sizes="100vw"
+              type="image/webp"
             >
             <img 
-              src="assets/images/head2-optimized.jpg" 
-              alt="" 
-              class="w-full h-full object-cover opacity-40" 
-              style="object-position: center 20%;"
-              loading="lazy"
+              src="/assets/images/responsive/head2-optimized-1280.webp"
+              alt="GhostBPA Hero Image"
+              width="1280"
+              height="720"
+              fetchpriority="high"
+              class="hero-bg-image"
             >
           </picture>
         </div>
